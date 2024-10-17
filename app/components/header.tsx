@@ -5,7 +5,7 @@ import { UserForClient } from '~/routes/_index'
 import { Button } from './ui/button'
 
 interface Props {
-  user: UserForClient | undefined
+  user: UserForClient | null
 }
 
 export const Header = ({ user }: Props) => {

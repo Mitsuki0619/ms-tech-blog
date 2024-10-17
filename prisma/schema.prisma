@@ -17,6 +17,7 @@ model User {
   image     String?
   role      Role     @default(USER)
   posts     Post[]
+  blogs     Blog[]
   profile   Profile?
   provider  String   @default("Credentials")
   createdAt DateTime @default(now())
@@ -34,17 +35,24 @@ model Post {
   id         Int        @id @default(autoincrement())
   createdAt  DateTime   @default(now())
   updatedAt  DateTime   @updatedAt
-  title      String
-  published  Boolean    @default(false)
+  content    String
   author     User       @relation(fields: [authorId], references: [id])
   authorId   String
+}
+
+model Blog {
+  id        Int      @id @default(autoincrement())
+  title     String
+  content   String
+  author    User     @relation(fields: [authorId], references: [id])
+  authorId  String
   categories Category[]
 }
 
 model Category {
   id    Int    @id @default(autoincrement())
   name  String
-  posts Post[]
+  posts Blog[]
 }
 
 enum Role {

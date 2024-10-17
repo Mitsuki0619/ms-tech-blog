@@ -1,8 +1,7 @@
 import devServer, { defaultOptions } from '@hono/vite-dev-server'
 import adapter from '@hono/vite-dev-server/cloudflare'
 import {
-  vitePlugin as remix,
-  cloudflareDevProxyVitePlugin as remixCloudflareDevProxy,
+  vitePlugin as remix
 } from '@remix-run/dev'
 import { flatRoutes } from 'remix-flat-routes'
 import { defineConfig } from 'vite'

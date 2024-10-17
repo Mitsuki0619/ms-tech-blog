@@ -1,6 +1,6 @@
 import { User } from '@prisma/client/edge'
 import { json, LoaderFunctionArgs } from '@remix-run/cloudflare'
-import { Outlet, redirect, useLoaderData } from '@remix-run/react'
+import { Outlet, useLoaderData } from '@remix-run/react'
 
 import { Layout } from '~/components/layout'
 import { getAuthenticator } from '~/services/auth/auth.server'
@@ -14,7 +14,7 @@ export const loader = async ({ request, context }: LoaderFunctionArgs) => {
   const authenticator = getAuthenticator(context)
   const user = await authenticator.isAuthenticated(request)
   if (!user) {
-    return redirect('/signin')
+    return null
   }
   const { email, name, id, role, image } = user
   return json({ email, name, id, role, image })

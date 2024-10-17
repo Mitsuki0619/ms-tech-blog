@@ -6,7 +6,7 @@ import { Header } from './header'
 
 export interface LayoutProps {
   children: ReactNode
-  user: UserForClient | undefined
+  user: UserForClient | null
 }
 
 export const Layout = ({ children, user }: LayoutProps) => {
